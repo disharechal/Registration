@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_Session</title>
+    <link rel="stylesheet" href="Registration.css">
+</head>
+<body>
+    <hr>
+    <center>
+        <h1 class="heading"><tt>Registration Form</tt></h1>
+            <table border="10">
+                <form action="" method="post" onsubmit="return TestCase1()">
+                    <tr>
+                        <td><label for="" class="text">First Name</label></td>
+                        <td><input type="text" placeholder="FirstName" id="a"></td>
+                        <span id="A"></span>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">Last Name</label></td>
+                        <td><input type="text" placeholder="LastName" id="b"></td>
+                        <span id="B"></span>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">Username</label></td>
+                        <td><input type="text" placeholder="Username" id="c"></td>
+                        <span id="C"></span>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">Password</label></td>
+                        <td><input type="text" placeholder="Password" id="d"></td>
+                        <span id="D"></span>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">Confirm Password</label></td>
+                        <td><input type="text" placeholder="Confirm Password" id="e"></td>
+                        <span id="E"></span>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">Email</label></td>
+                        <td><input type="text" placeholder="Email" id="f"></td>
+                        <span id="F"></span>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">Gender</label></td>
+                        <td>
+                            <input type="radio" name="gender" value="male"><label for="">Male</label>
+                            <input type="radio" name="gender" value="female"><label for="">Female</label>
+                            <span id="G"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="" class="text">City|State|Country</label></td>
+                        <td>
+                            <select name="city">
+                                <option value="">--City--</option>
+                                <option value="">Hyderabad</option>
+                                <option value="">Mumbai</option>
+                                <option value="">Bengaluru</option>
+                                <option value="">Delhi</option>
+                                <span id="H"></span>
+                            </select>
+
+                            <select name="state">
+                                <option value="">--State--</option>
+                                <option value="">Telangana</option>
+                                <option value="">Maharastra</option>
+                                <option value="">Karnataka</option>
+                                <option value="">New Delhi</option>
+                                <span id="I"></span>
+                            </select>
+
+                            <select name="country">
+                                <option value="">--Country--</option>
+                                <option value="">India</option>
+                                <option value="">USA</option>
+                                <option value="">Canada</option>
+                                <option value="">Germany</option>
+                                <span id="J"></span>
+                            </select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <input type="submit" value="REGISTER">
+                            <input type="reset" value="RESET">
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </center>
+        
+       
+    </fieldset>
+    <hr>
+    <script>
+        function TestCase1()
+        {
+            var firstname = document.getElementById("a").value
+            var lastname = document.getElementById("b").value
+            var username = document.getElementById("c").value
+            var p1 = document.getElementById("d").value
+            var p2 = document.getElementById("e").value
+            var email = document.getElementById("f").value
+            var gen = document.getElementsByName("gender")  
+            var city = document.getElementsByName("city")
+            var state = document.getElementsByName("state")
+            var country = document.getElementsByName("country")
+            var language = document.getElementsByName("language")
+
+            var obj1 = firstname.match(/[A-Z]{1}[a-z]*/g)
+            var obj2 = lastname.match(/[A-Z]{1}[a-z]*/g)
+            var obj3 = username.match(/[A-Z]{1}[a-z]*/g)
+            var obj4 = p1.match(/[A-Z]{1}[a-z]{5}[0-9]{3}/g)
+            var obj5 = p2.match(/[A-Z]{1}[a-z]{5}[0-9]{3}/g)
+            var obj6 = email.match(/\w[A-Za-z0-9._]*@gmail[.]com/g)
+
+            // firstname validation
+
+            if(firstname==""||firstname==null){
+                window.alert("Dear User: FirstName is required")
+                document.getElementById("A").innerHTML = "*** Dear User: FirstName is required ***"
+                return false
+            }
+            else if(obj1==""||obj1==null){
+                window.alert("Dear User: Invalid Firstname")
+                document.getElementById("A").innerHTML = firstname+"*** Dear User: Invalid Firstname***"
+                return false
+            }
+
+            //lastname validation
+            if(lastname==""||lastname==null){
+                window.alert("Dear User: LastName is required")
+                document.getElementById("B").innerHTML = "*** Dear User: LastName is required ***"
+                return false
+            }
+            else if(obj2==""||obj2==null){
+                window.alert("Dear User: Invalid LastName")
+                document.getElementById("B").innerHTML = lastname+"*** Dear User: Invalid LastName*** "
+                return false
+            }
+
+            //username validation
+
+            if(username==""||username==null){
+                window.alert("Dear User: Username is required")
+                document.getElementById("C").innerHTML = "*** Dear User: Username is required ***"
+                return false
+            }
+            else if(obj3==""||obj3==null){
+                window.alert("Dear User: Invalid Username")
+                document.getElementById("C").innerHTML = username+"*** Dear User: Invalid Username *** "
+                return false
+            }
+
+            //password validation
+            else if(p1==""||p1==null){
+                window.alert("Dear User: Password is required")
+                document.getElementById("D").innerHTML = "*** Dear User: Password is required ***"
+                return false
+            }
+            else if(obj4==""||obj4==null){
+                window.alert("Dear User:Invalid Password")
+                document.getElementById("D").innerHTML = p1+"*** Dear User: Invalid Password*** "
+                return false
+            }
+
+            //confirm password validation
+            if(p2==""||p2==null){
+                window.alert("Dear User: Confirm Password is required")
+                document.getElementById("E").innerHTML = "*** Dear User: Confirm Password is required ***"
+                return false
+            }
+            else if(obj5==""||obj5==null){
+                window.alert("Dear User: Invalid Confirm Password")
+                document.getElementById("E").innerHTML = p2+"*** Dear User: Invalid Confirm Password *** "
+                return false
+            }
+            else if(p1!=p2){
+                window.alert("Dear User: Passwords are not matched")
+                document.getElementById("E").innerHTML = p1+" "+p2+"*** Dear User: Passwords are not matched ***"
+                return false
+            }
+
+            //email validation
+            if(email==""||email==null){
+                window.alert("Dear User: Email is required")
+                document.getElementById("F").innerHTML = email+"*** Dear User: Email is required ***"
+                return false
+            }
+            else if(obj6==null||obj6==""){
+                window.alert("Dear User: Invalid Email")
+                document.getElementById("F").innerHTML = email+"*** Dear User: Invalid Email*** "
+                return false
+            }
+
+            //gender validation
+            if(gen[0].checked==false && gen[1].checked==false){
+                    window.alert("Dear User: verify whether you are male or female")
+                    document.getElementById("G").innerHTML = "*** Dear User: verify whether you are male or female ***"
+                    return false
+            }
+
+            //city state and country validation
+            if(city[0].selectedIndex==""){  // for selected index always use number not string(or use this symbol !)
+                window.alert("Dear User: City is required")
+                document.getElementById("H").innerHTML = "*** Dear User: City is required ***"
+                return false
+            }
+            else if(state[0].selectedIndex==""){
+                window.alert("Dear User: State is required")
+                document.getElementById("H").innerHTML = "*** Dear User: State is required ***"
+                return false
+            }
+            else if(country[0].selectedIndex==""){
+                window.alert("Dear User: Country is required")
+                document.getElementById("H").innerHTML = "*** Dear User: Country is required ***"
+                return false
+            }
+            }   
+    </script>
+</body>
+</html>
