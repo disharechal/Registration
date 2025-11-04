@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registration Form</title>
+  <style>
+    :root {
+      --max-width: 480px;
+      --accent: #2563eb;
+      --danger: #dc2626;
+      --muted: #6b7280;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: var(--max-width);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 22px rgba(16,24,40,0.08);
+      padding: 20px 22px;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+    p.lead {
+      margin: 0 0 18px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 13px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e6e9ee;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .show-pass {
+      position: absolute;
+      right: 10px;
+      top: 34px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      user-select: none;
+    }
+    .show-pass input {
+      margin: 0;
+      transform: translateY(1px);
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .places {
+      color:black;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .gender-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="field" role="region" aria-label="Registration form">
+    <h1>REGISTRATION_FORM</h1>
+   
+
+    <!-- <form id="regForm" novalidate> -->
+      <form action="" method="post" onsubmit="return TestCase1()"></form>
+      <div class="row">
+        <div class="field">
+          <label for="firstName">First name</label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+          <div class="error" id="err-firstName" aria-live="polite"></div>
+          <span id="A"></span>
+        </div>
+
+        <div class="field">
+          <label for="lastName">Last name</label>
+          <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+          <div class="error" id="err-lastName" aria-live="polite"></div>
+           <span id="B"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required />
+        <div class="error" id="err-username" aria-live="polite"></div>
+         <span id="C"></span>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+        <div class="error" id="err-email" aria-live="polite"></div>
+         <span id="D"></span>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone number (10 digits)</label>
+        <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="12" autocomplete="tel" placeholder="eg:+91-9012312312" required />
+        <div class="error" id="err-phone" aria-live="polite"></div>
+         <span id="E"></span>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" minlength="6" autocomplete="new-password" required />
+        <div class="show-pass">
+          <input id="showPassword" type="checkbox" aria-label="Show password" />
+          <label for="showPassword" style="cursor:pointer">Show</label>
+           <span id="F"></span>
+        </div>
+        <div class="help">Minimum 6 characters.</div>
+        <div class="error" id="err-password" aria-live="polite"></div>
+         <span id="G"></span>
+      </div>
+
+      <div class="field">
+        <label for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required />
+        <div class="error" id="err-confirmPassword" aria-live="polite"></div>
+         <span id="H"></span>
+      </div>
+
+      <div>
+        <label>Gender</label>
+        <div class="gender-row" role="radiogroup" aria-labelledby="gender-label">
+          <label><input type="radio" name="gender" value="female" required /> Female</label>
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+          <label><input type="radio" name="gender" value="other" /> Other</label>
+        </div>
+        <br>
+        <div class="places" id="er-places" aria-live="polite">
+       <label for="">City|State|Country</label>
+       <select name="city">
+        <option value="">--City--</option>
+        <option value="">Hyderabad</option>
+        <option value="">Mumbai</option>
+        <option value="">Bengularu</option>
+        <option value="">Delhi</option>
+       </select>
+       <select name="State">
+        <option value="">--State--</option>
+        <option value="">Telangana</option>
+        <option value="">Maharastra</option>
+        <option value="">Karnataka</option>
+        <option value="">Delhi</option>
+       </select>
+       <select name="Country">
+        <option value="">--Country--</option>
+        <option value="">India</option>
+        <option value="">India</option>
+        <option value="">India</option>
+        <option value="">India</option>
+       </select>
+        </div>
+        <br>
+      <div class="actions">
+        <button class="btn" id="submitBtn" type="submit">Register</button>
+        <div class="small">Already have an account? <a href="#">Sign in</a></div>
+         <span id="J"></span>
+      </div>
+    </form>
+  </div>
+  <center>
+    <span id="x"></span>
+  </center>
+  <script>
+        function Test_Case1()
+        {
+            var firstName=document.getElementById("A").value 
+            var lastName=document.getElementById("B").value 
+            var username=document.getElementById("C").value 
+            var email=document.getElementById("D").value 
+            var phone=document.getElementById("E").value 
+            var Password=document.getElementById("F").value 
+            var confirmPassword=document.getElementById("G").value 
+            var gender=document.getElementById("H").value 
+            var places=document.getElementById("I").value 
+            var actions=document.getElementById("J").value 
+      if(firstname==""||firstname==null) {
+        window.alert("Dear User: FirstName is required")
+        document.getElementById("x").innerHTML = "*** Dear User: FirstName is required ***"
+        return false;
+      }
+      if(lastname==""||lastname==null) {
+        window.alert("Dear User: LastName is required")
+        document.getElementById("x").innerHTML = "*** Dear User: LastName is required ***"
+        return false
+      }
+      if(username==""||username==null) {
+        window.alert("Dear User: Username is required")
+        document.getElementById("x").innerHTML = "*** Dear User: Username is required ***"
+        return false
+      } else if (username.length < 3) {
+        setError('username', 'Username must be at least 3 characters.');
+        return false;
+      }
+
+      if (!email) {
+        window.alert("Dear User: Password is required")
+        document.getElementById("x").innerHTML = "*** Dear User: Password is required ***"
+        return false
+      } else if (!emailRe.test(email)) {
+        window.alert("Dear User: Email is required")
+        document.getElementById("x").innerHTML = email+"*** Dear User: Email is required ***"
+        return false
+      }
+
+      if (!phone) {
+        window.alter("Dear User: Phone is Requried")
+        document.getElementById("x").innerHTML= phone+"*** Dear User: Phone is Requried ***"
+        
+      } else if (!/^\d{10}$/.test(phone)) {
+       setError('phone', 'Enter a 10-digit phone number (digits only).');
+       return  false;
+      }
+
+      if (!pwd) {
+        window.alert('Dear USer: Please enter a password.')
+        document.getElementById("x").innerHTML=pwd+"*** Dear USer: Please enter a password *** "
+        return false;
+      } else if (pwd.length < 6) {
+       window.alert("Dear User: Password length  is required")
+       document.getElementById("x").innerHTML = pwd.length+"*** Dear User: Password length is required ***"
+       return false
+      }
+
+      if (!cpwd) {
+        window.alert("Dear User: Confirm Password is required")
+        document.getElementById("x").innerHTML = "*** Dear User: Confirm Password is required ***"
+        return false
+      } else if (pwd !== cpwd) {
+        window.alert("Dear User: Given Passowrd is not matched")
+        document.getElementById("x").innerHTML= cpwd+"*** Dear User: Given Passowrd is not matched *** "
+        return false;
+      }
+
+      if (!gender) {
+        window.alert("Dear User: verify whether you are male or female")
+        document.getElementById("x").innerHTML = "*** Dear User: verify whether you are male or female ***"
+        return false
+      }
+
+      if (!places) {
+        window.alert("Dear User: City is required")
+        document.getElementById("x").innerHTML = "*** Dear User: City is required ***"
+        return false
+      }
+
+      if (!ok) {
+        // Focus first error field
+        const firstError = document.querySelector('.error:not(:empty)');
+        if (firstError) {
+          const id = firstError.id.replace('err-', '');
+          const el = document.getElementById(id);
+          if (el) el.focus();
+        }
+        return;
+      }
+       const formData = {
+        firstName, lastName, username, email, phone, gender
+      };
+      confirmPassword.addEventListener('input', () => {
+      if (confirmPassword.value && password.value !== confirmPassword.value) {
+        setError('confirmPassword', 'Passwords do not match.');
+      } else {
+        setError('confirmPassword', '');
+      }
+    });
+
+            
+        }
+
+  </script>
